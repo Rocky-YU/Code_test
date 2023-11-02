@@ -23,6 +23,8 @@ git branch testbranch 创建分支testbranch
 git checkout testbranch 切换到分支testbranch
 git push origin testbranch 在分支testbranch环境下，使用该命令，同步到GitHub。如果在其它分支则 git push origin 其它分支
 git merge  命令时用来合并的，而合并的对象就是branch（分支）
+git pull 
+
 
 
 # Git中分支解释
