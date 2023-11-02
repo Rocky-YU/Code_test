@@ -24,6 +24,12 @@ git checkout testbranch 切换到分支testbranch
 git push origin testbranch 在分支testbranch环境下，使用该命令，同步到GitHub。如果在其它分支则 git push origin 其它分支
 git merge  命令时用来合并的，而合并的对象就是branch（分支）
 git pull 
+git fetch  将本地分支与远程保持同步
+git fetch --all  将本地所有分支与远程保持同步
+git pull --all  拉取所有分支代码
+
+
+
 
 
 
