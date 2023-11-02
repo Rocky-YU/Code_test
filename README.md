@@ -20,5 +20,6 @@ git merge a命令，将a分支合并到master分支，前提是先切回到maste
 git branch -d a命令，删除a分支。（也是需要先切回其它分支，不能在该分支下删除该分支）
 git tag v1.0命令，为当前分支添加标签。
 
-
+# Git中分支解释
+  https://blog.csdn.net/xiaoxuantengkong/article/details/45231331
 
