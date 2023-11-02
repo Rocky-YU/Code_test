@@ -28,6 +28,8 @@ git fetch  将本地分支与远程保持同步
 git fetch --all  将本地所有分支与远程保持同步
 git pull --all  拉取所有分支代码
 
+在进行同步本地和远程仓库时，注意 git pull origin 分支，还是先 git push origin 分支。
+
 # Git中分支解释
   https://blog.csdn.net/xiaoxuantengkong/article/details/45231331
 
