@@ -19,6 +19,11 @@ git checkout a命令，切换到a分支。
 git merge a命令，将a分支合并到master分支，前提是先切回到master分支。
 git branch -d a命令，删除a分支。（也是需要先切回其它分支，不能在该分支下删除该分支）
 git tag v1.0命令，为当前分支添加标签。
+git branch testbranch 创建分支testbranch
+git checkout testbranch 切换到分支testbranch
+git push origin testbranch 在分支testbranch环境下，使用该命令，同步到GitHub。如果在其它分支则 git push origin 其它分支
+git merge  命令时用来合并的，而合并的对象就是branch（分支）
+
 
 # Git中分支解释
   https://blog.csdn.net/xiaoxuantengkong/article/details/45231331
