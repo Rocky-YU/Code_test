@@ -1,0 +1,102 @@
+#！usr/bin/env python3
+# -*- coding: utf-8 -*-
+__author__ = ' Rocky-YU '
+
+'根据逆解方程来绘制满足条件的所有可达空间位置'
+
+import random
+import func
+import math
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# 定义初始模型条件
+r = 100 # 单位为 mm
+bata = math.pi/1.5 # 120度
+# bata = math.pi/2 # 90度
+# bata = math.pi/3 # 60度
+# bata = math.pi/6 # 30度
+# bata = math.pi/18 # 10度
+# bata = 0 # 30度
+
+
+# 创建点集
+points =[]
+col = np.random.rand(500)
+print(col[1])
+
+def condition(z):
+    # 这里写你的条件，例如：
+    return col[int((z-130))]
+
+for z in np.arange(130, 160, 1):
+    for x in np.arange(0, math.pi,0.02):
+        for y in np.arange(0, 2*math.pi,0.04):
+            # print(f'({x}, {y}, {z})')
+            r2 = [0, 0, 0, 0]
+            # r1 = math.sqrt(fy**2 + zp**2)
+            r2[0] = x
+            r2[1] = y
+            r2[2] = z
+            r2[3] = condition(z)
+            points.append(r2)
+
+# # 创建空的点集合
+# def generate_points(num_points):
+#     points = []
+#     for _ in range(num_points):
+#         # 在[0, 100]范围内随机生成x坐标
+#         fy = random.uniform(0,math.pi) #Fy
+#         # 在[0, 100]范围内随机生成y坐标
+#         alpha = random.uniform(0,2*math.pi) #Alpha
+#         # 在[100, 130]范围内随机生成z坐标
+#         zp = random.uniform(130, 160)
+#         points.append((fy, alpha, zp))
+#     return points
+# # 生成10000个点
+# point = generate_points(100000)
+# # point = np.array(point)
+
+def filter_points(points):
+    filtered_points = []
+    for point in points:
+        # 计算点到原点的距离
+        fy = point[0]
+        alpha = point[1]
+        # fy = math.radians(point[0])
+        # alpha = math.radians(point[1])
+        zp = point[2]
+        q1 = func.Func(r, alpha, fy, bata, zp).q_1()
+        q2 = func.Func(r, alpha, fy, bata, zp).q_2()
+        q3 = func.Func(r, alpha, fy, bata, zp).q_3()
+        # filtered_points.append(point)
+        # 判断是否满足条件
+        if 130<=q1<=160 and 130<=q2<=160 and 130<=q3<=160:
+            r2 = [0,0,0,0]
+            # r1 = math.sqrt(fy**2 + zp**2)
+            r1 = fy
+            r2[0] = r1 * math.cos(alpha)
+            r2[1] = r1 * math.sin(alpha)
+            r2[2] = point[2]
+            r2[3] = point[3]
+            filtered_points.append(r2)
+            # filtered_points.append(point)
+    return filtered_points
+
+point1 = filter_points(points)
+points = np.array(point1)
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(points[:, 0], points[:, 1], points[:, 2],s=20,c=points[:, 3],marker='s')
+# ax.set_xlabel('fy')
+# ax.set_ylabel('alpha')
+# ax.set_zlabel('zp')
+ax.set_title(' workspace --  ')
+plt.show()
+
+# ax.view_init(elev=0, azim=90)  # 设置观察角度，elev表示仰角，azim表示方位角
+# plt.savefig('front_view.png')  # 保存图像为front_view.png
+# plt.show()
+
