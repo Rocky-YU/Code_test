@@ -32,4 +32,4 @@ git pull --all  拉取所有分支代码
 
 # Git中分支解释
   https://blog.csdn.net/xiaoxuantengkong/article/details/45231331
-
+ token命令：git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
