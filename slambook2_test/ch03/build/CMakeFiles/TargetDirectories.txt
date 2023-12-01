@@ -1,0 +1,3 @@
+/home/rocky/code/ch03/build/CMakeFiles/rebuild_cache.dir
+/home/rocky/code/ch03/build/CMakeFiles/plot.dir
+/home/rocky/code/ch03/build/CMakeFiles/edit_cache.dir
